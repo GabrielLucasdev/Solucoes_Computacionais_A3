@@ -1,55 +1,42 @@
+package com.mycompany.clinica;
+
 public class Pessoa {
-
+    
+    // Atributos da classe Pessoa
     private String nome;
-    private String cpf;
+    private long cpf;
     private String endereco;
-    private int id;
+    private long telefone;
 
-    public Pessoa(int id, String nome, String cpf, String endereco) {
-        this.id = id;
+    // Construtor da classe Pessoa
+    public Pessoa(String nome, long cpf, String endereco, long telefone) {
+        // Inicialização dos atributos da classe Pessoa
         this.nome = nome;
         this.cpf = cpf;
         this.endereco = endereco;
+        this.telefone = telefone;
     }
 
-    public Pessoa(int id, String nome, String cpf) {
-        this.id = id;
-        this.nome = nome;
-        this.cpf = cpf;
-        endereco = "ENDEREÇO NÃO INFORMADO.";
-    }
-
-    public int getId() {
-        return id;
-    }
-
+    // Métodos getter para obter os valores dos atributos da classe Pessoa
     public String getNome() {
         return nome;
     }
 
-    public String getCpf() {
+    public long getCpf() {
         return cpf;
     }
-
+    
     public String getEndereco() {
         return endereco;
     }
-
-    public int setId() {
-        return id;
+    
+    public long getTelefone() {
+        return telefone;
     }
 
-    public String setNome() {
-        return nome;
+    // Sobrescrita do método toString para retornar os dados da Pessoa
+    @Override
+    public String toString() {
+        return "Nome: " + nome + "\nCPF: " + cpf + "\nEndereço: " + endereco + "\nTelefone: " + telefone;
     }
-
-    public String setCpf() {
-        return cpf;
-    }
-
-    public String setEndereco() {
-        return endereco;
-    }
-
 }
-
