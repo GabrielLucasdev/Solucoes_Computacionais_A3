@@ -1,54 +1,45 @@
-import java.time.*;
+package com.mycompany.clinica;
+
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 
 public class Consulta {
-
+    
+    // Atributos da classe Consulta
     private Paciente paciente;
     private Medico medico;
-    private LocalDate data;
-    private LocalTime hora;
+    private LocalDateTime dataHora;
 
-    public Consulta(Paciente paciente, Medico medico, LocalDate data, LocalTime hora) {
+    // Construtor da classe Consulta
+    public Consulta(Paciente paciente, Medico medico, LocalDateTime dataHora) {
+        // Inicialização dos atributos da classe Consulta
         this.paciente = paciente;
         this.medico = medico;
-        this.data = data;
-        this.hora = hora;
+        this.dataHora = dataHora;
     }
 
-    // Getter e Setter para paciente
+    // Métodos getter para obter os valores dos atributos da classe Consulta
     public Paciente getPaciente() {
         return paciente;
     }
 
-    public void setPaciente(Paciente paciente) {
-        this.paciente = paciente;
-    }
-
-    // Getter e Setter para medico
     public Medico getMedico() {
         return medico;
     }
 
-    public void setMedico(Medico medico) {
-        this.medico = medico;
+    public LocalDateTime getDataHora() {
+        return dataHora;
     }
 
-    public LocalDate getData(){
-        return data;
-    }
+    // Sobrescrita do método toString para retornar os dados da Consulta
+    @Override
+    public String toString() {
+        // Formatação da data e hora usando DateTimeFormatter
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
 
-    public LocalDate setData(LocalDate data){
-        return data;
-    }
-
-    public LocalTime getHora(){
-        return hora;
-    }
-
-    public LocalTime setHora(LocalTime hora){
-        return hora;
+        // Retorna uma string com os dados da consulta formatados
+        return "Paciente: " + paciente.getNome() + ", CPF: " + paciente.getCpf() + " - Médico: " + medico.getNome()
+                + ", Especialidade: " + medico.getEspecialidade() + " - Data e Hora: " + dataHora.format(formatter);
     }
 }
-
-
-
-
