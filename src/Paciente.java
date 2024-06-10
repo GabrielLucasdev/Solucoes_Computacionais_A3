@@ -1,26 +1,30 @@
+package com.mycompany.clinica;
+
+// A classe Paciente herda os atributos e métodos da classe Pessoa
 public class Paciente extends Pessoa {
 
-    private String telefone;
+    // Atributo específico da classe Paciente
+   
+    private String historicoMedico;
 
-    public Paciente(int id, String nome, String cpf, String endereco, String telefone) {
-        super(id, nome, cpf, endereco);
-        this.telefone = telefone;
+    // Construtor da classe Paciente
+    public Paciente(String nome, long cpf, String endereco, long telefone, String historicoMedico) {
+        
+        super(nome, cpf, endereco, telefone); // Chamada ao construtor da classe mãe (superclasse) Pessoa
+        
+        // Inicialização do atributo específico da classe Paciente
+        this.historicoMedico = historicoMedico;
     }
 
-    public String getTelefone() {
-        return telefone;
+    // Método getter para obter o histórico médico do paciente
+    public String getHistoricoMedico() {
+        return historicoMedico;
     }
 
-    public String setTelefone(String telefone) {
-        this.telefone = telefone;
-        return telefone;
-    }
-
-    public String exibeDados() {
-        return "Nome: " + getNome() +
-                "CPF: " + getCpf() +
-                "Identidade: " + getId() +
-                "Endereço: " + getEndereco() +
-                "Telefone: " + getTelefone();
+    // Sobrescrita do método toString para retornar os dados do Paciente
+    @Override
+    public String toString() {
+        // Utiliza o método toString da classe mãe (superclasse) Pessoa
+        return super.toString() + "\nHistórico Médico: " + historicoMedico;
     }
 }
