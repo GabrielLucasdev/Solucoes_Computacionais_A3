@@ -1,39 +1,37 @@
-import java.util.Scanner;
+package com.mycompany.clinica;
+//import java.util.Scanner;
 
+// A classe Medico herda os atributos e métodos da classe Pessoa
 public class Medico extends Pessoa {
 
-    Scanner scan = new Scanner(System.in);
-    private String crm;
+    // Atributos específicos da classe Medico
     private String especialidade;
+    private int crm;
 
-    public Medico(int id, String nome, String cpf, String endereco, String crm, String especialidade) {
-        super(id, nome, cpf, endereco);
-        this.crm = crm;
+    // Construtor da classe Medico
+    public Medico(String nome, long cpf, String endereco, long telefone, String especialidade, int crm) {
+        
+        super(nome, cpf, endereco, telefone); // Chamada o construtor da classe mãe (superclasse) Pessoa
+        
+        // Inicialização dos atributos específicos da classe Medico
         this.especialidade = especialidade;
-    }
-
-    public String getCrm() {
-        return crm;
-    }
-
-    public void setCrm(String crm) {
         this.crm = crm;
     }
 
+    // Método getter para obter a especialidade do médico
     public String getEspecialidade() {
         return especialidade;
     }
 
-    public void setEspecialidade(String especialidade) {
-        this.especialidade = especialidade;
+    // Método getter para obter o CRM do médico
+    public int getCrm() {
+        return crm;
     }
 
-    public String exibeDados() {
-        return "\nDados do médico ID: " + getId() +
-                "\nNome: " + getNome() +
-                "\nCPF: " + getCpf() +
-                "\nEndereço: " + getEndereco() +
-                "\nCRM: " + getCrm() +
-                "\nEspecialidade: " + getEspecialidade();
+    // Sobrescrita do método toString para retornar os dados do Médico
+    @Override
+    public String toString() {
+        // Utiliza o método toString da classe mãe (superclasse) Pessoa
+        return super.toString() + "\nEspecialidade: " + especialidade + ", CRM: " + crm;
     }
 }
