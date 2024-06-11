@@ -22,7 +22,7 @@ public class Clinica {
         medicos.add(medicoInicial1);
         Medico medicoInicial2 = new Medico("Ana Moreira", 4L, "Rua Fabricio, 101, Esmeralda", 31988887777L, "Oncologia", 4567);
         medicos.add(medicoInicial2);
-        
+
         Paciente pacienteInicial1 = new Paciente("Maria Joaquina", 1L, "Rua Fagundes, 11, Ribeirão", 31988887777L, "Paciente teve câncer em 2021");
         pacientes.add(pacienteInicial1);
         Paciente pacienteInicial2 = new Paciente("José da Silva", 2L, "Rua Gino, 98, Pontal", 31988887777L, "Paciente fez cirurgia de coração em 2019");
@@ -54,7 +54,7 @@ public class Clinica {
                     agendarConsulta(scanner, pacientes, medicos, consultas); // Chama o método agendar consulta
                     break;
                 case 6:
-                    consultarConsultas(consultas); // Chama o método consultar consulta
+                    consultarConsultas(scanner, consultas); // Chama o método consultar consulta
                     break;
                 case 0:
                     System.out.println("\nSaindo...");
@@ -143,7 +143,7 @@ public class Clinica {
     // Método para consultar médicos cadastrados
     private static void consultarMedico(Scanner scanner, ArrayList<Medico> medicos) { // recebe o valor que o usuário digitou e a lista de medicos
         // Verifica se há médicos cadastrados
-        if (medicos.isEmpty()) { 
+        if (medicos.isEmpty()) {
             System.out.println("Nenhum médico cadastrado.");
             return;
         }
@@ -152,16 +152,16 @@ public class Clinica {
             System.out.println((i + 1) + ". " + medicos.get(i).getNome() + ", CPF: " + medicos.get(i).getCpf() + ", CRM: " + medicos.get(i).getCrm() + ", Especialidade: " + medicos.get(i).getEspecialidade());
         }
     }
-     
+
     // Método para agendar uma nova consulta
-    private static void agendarConsulta(Scanner scanner, ArrayList<Paciente> pacientes, ArrayList<Medico> medicos, ArrayList<Consulta> consultas) { 
-        
+    private static void agendarConsulta(Scanner scanner, ArrayList<Paciente> pacientes, ArrayList<Medico> medicos, ArrayList<Consulta> consultas) {
+
         System.out.println("\n---- Cadastro de consultas ----");
         // solicita o CPF do paciente e faz a leitura do valor
         System.out.print("Digite o CPF do paciente: ");
         long cpfPaciente = scanner.nextLong();
         scanner.nextLine();  // Consumir a nova linha
-        
+
         // Busca pelo paciente na lista de pacientes
         Paciente paciente = null;
         for (Paciente p : pacientes) {
@@ -180,7 +180,7 @@ public class Clinica {
         System.out.print("Digite o CPF do médico: ");
         long cpfMedico = scanner.nextLong();
         scanner.nextLine();  // Consumir a nova linha
-        
+
         // Busca pelo médico na lista de médicos
         Medico medico = null;
         for (Medico m : medicos) {
@@ -214,11 +214,10 @@ public class Clinica {
     }
 
     // Método para consultar as consultas agendadas 
-    private static void consultarConsultas(ArrayList<Consulta> consultas) { // recebe um arraylist de consultas ja existentes
+    private static void consultarConsultas(Scanner scanner, ArrayList<Consulta> consultas) { // recebe um arraylist de consultas ja existentes
         System.out.println("\n----- Detalhes das consultas agendadas -----");
-        
-        
-        // Verifica se possui consultas cadastradas
+
+        /*// Verifica se possui consultas cadastradas
         if (consultas.isEmpty()) {
             System.out.println("Nenhuma consulta agendada.");
             return;
@@ -227,6 +226,26 @@ public class Clinica {
         // Exibe as consultas cadastradas
         for (Consulta consulta : consultas) {
             System.out.println(consulta);
+        }*/
+        
+        System.out.print("Digite o CPF do paciente para consultar os agendamentos: ");
+        long cpfPaciente = scanner.nextLong();
+        scanner.nextLine();  // Consumir a nova linha
+
+        //boolean consultaEncontrada = false;
+        System.out.println("\n----- Consultas do paciente -----");
+        for (Consulta consulta : consultas) {
+            if (consulta.getPaciente().getCpf() == cpfPaciente) {
+                System.out.println(consulta);
+                //consultaEncontrada = true;
+            }
+            else{
+                System.out.println("Nenhuma consulta encontrada para o CPF fornecido.");
+            }
         }
+
+        /*if (!consultaEncontrada) {
+            System.out.println("Nenhuma consulta encontrada para o CPF fornecido.");
+        }*/
     }
 }
