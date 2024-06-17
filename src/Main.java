@@ -232,7 +232,7 @@ public class Clinica {
         long cpfPaciente = scanner.nextLong();
         scanner.nextLine();  // Consumir a nova linha
 
-        //boolean consultaEncontrada = false;
+   
         System.out.println("\n----- Consultas do paciente -----");
         for (Consulta consulta : consultas) {
             if (consulta.getPaciente().getCpf() == cpfPaciente) {
@@ -243,9 +243,5 @@ public class Clinica {
                 System.out.println("Nenhuma consulta encontrada para o CPF fornecido.");
             }
         }
-
-        /*if (!consultaEncontrada) {
-            System.out.println("Nenhuma consulta encontrada para o CPF fornecido.");
-        }*/
     }
 }
