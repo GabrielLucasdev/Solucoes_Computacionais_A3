@@ -130,14 +130,14 @@ public class Clinica {
     private static void consultarPaciente(Scanner scanner, ArrayList<Paciente> pacientes) { // recebe o valor que o usuário digitou e a lista de pacientes
         System.out.print("Digite o CPF do paciente: ");
         long cpf = scanner.nextLong();
-        System.out.println("\n----- Paciente cadastrado -----");
         for (Paciente paciente : pacientes) { // percorre a lista de pacientes 
             if (paciente.getCpf() == cpf) { // verificar se o cpf que o usuário informou existe na lista de pacientes cadastrados
+                System.out.println("\n----- Paciente cadastrado -----");
                 System.out.println(paciente); // exibe o paciente pesquisado
                 return;
             }
         }
-        System.out.println("Paciente não encontrado.");
+       System.out.println("\n------- Paciente não encontrado. -------");
     }
 
     // Método para consultar médicos cadastrados
